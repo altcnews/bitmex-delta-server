@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cd "$(dirname "$0")/.." || exit
+
+readonly secrets=./secrets/
+
+BITMEX_API_KEY=$(cat "${secrets}/bitmex_api_key")
+BITMEX_API_SECRET=$(cat "${secrets}/bitmex_api_secret")
+export BITMEX_API_KEY
+export BITMEX_API_SECRET
+
+DELTA_SERVER_PORT=4444 \
+                 node index.js

@@ -1,0 +1,25 @@
+---
+version: '3.7'
+
+services:
+  bitmex_delta_server:
+    build: .
+    container_name: bitmex_delta_server
+    ports:
+      - "4444:4444"
+    environment:
+      - TZ=utc
+      # - TESTNET=true
+      - DELTA_SERVER_PORT=4444
+      # RESUME
+      # - SYMBOLS=
+      # - STREAMS=
+    secrets:
+      - bitmex_api_key
+      - bitmex_api_secret
+
+secrets:
+  bitmex_api_key:
+    file: ./secrets/bitmex_api_key
+  bitmex_api_secret:
+    file: ./secrets/bitmex_api_secret
