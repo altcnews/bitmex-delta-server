@@ -12,6 +12,11 @@ want to write websocket integration yourself.
 
 ### Usage
 
+Choose between installing dependencies manually or executing with a
+docker container.
+
+#### Manual
+
 Usage of this server requires [installing Node.JS](https://nodejs.org/download/). Be sure you have at least
 Node 6.x or later. On most Linux distributions, you can download via the
 [NodeSource PPA](https://github.com/nodesource/distributions#installation-instructions).
@@ -39,6 +44,20 @@ node index.js
 curl "http://localhost:4444"
 curl "http://localhost:4444/instrument"
 curl "http://localhost:4444/instrument?symbol=XBTUSD"
+```
+
+#### Docker
+
+Build and run the delta-server with [docker-compose](https://docs.docker.com/compose/).
+
+Ensure
+- `docker-compose.yaml` is configured as desired
+- `secrets/bitmex_api_key` contains a valid api-key if necessary
+- `secrets/bitmex_api_secret` contains a valid api-secret if necessary
+
+``` bash
+docker-compose build
+docker-compose up -d
 ```
 
 ### Details
